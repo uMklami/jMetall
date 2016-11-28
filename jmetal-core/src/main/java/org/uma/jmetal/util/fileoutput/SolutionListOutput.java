@@ -109,23 +109,23 @@ public class SolutionListOutput {
     BufferedWriter bufferedWriter = context.getFileWriter();
 
     try {
-    	System.out.println("My Objectives printing started");
-    	
-    	for(int i =0; i<solutionList.size(); i++){
-    		System.out.println(solutionList.get(i)+" : ");
-    		for(int k=0; k<solutionList.get(i).getNumberOfObjectives(); k++){
-    			
-    			System.out.println(solutionList.get(i).getObjective(k));
-    		}
-    	}
-    	System.out.println("My Objectives printing Ended");
+//    	System.out.println("My Objectives printing started");
+//    	
+//    	for(int i =0; i<solutionList.size(); i++){
+//    		System.out.println(solutionList.get(i)+" : ");
+//    		for(int k=0; k<solutionList.get(i).getNumberOfObjectives(); k++){
+//    			
+//    			System.out.println(solutionList.get(i).getObjective(k));
+//    		}
+//    	}
+//    	System.out.println("My Objectives printing Ended");
     	
       if (solutionList.size() > 0) {
         int numberOfObjectives = solutionList.get(0).getNumberOfObjectives();
         for (int i = 0; i < solutionList.size(); i++) {
           for (int j = 0; j < numberOfObjectives; j++) {
             bufferedWriter.write(solutionList.get(i).getObjective(j) + context.getSeparator());
-            System.out.println(solutionList.get(i).getObjective(j) + context.getSeparator());
+            System.out.println(i + j+" : "+solutionList.get(i).getObjective(j));
           }
           bufferedWriter.newLine();
         }

@@ -70,8 +70,8 @@ public class NSGAIIIntegerRunner extends AbstractAlgorithmRunner {
       problemName = args[0] ;
       referenceParetoFront = args[1] ;
     } else {
-      problemName = "org.uma.jmetal.problem.multiobjective.FptvProblem" ;
-      referenceParetoFront = "";
+      problemName = "org.uma.jmetal.problem.multiobjective.ProductService" ;
+      referenceParetoFront = "E:/Office Data/Projects/jMetall/jmetal-problem/src/test/resources/pareto_fronts/ProductService.pf";
     }
 
     problem = ProblemUtils.<IntegerSolution> loadProblem(problemName);
@@ -88,7 +88,7 @@ public class NSGAIIIntegerRunner extends AbstractAlgorithmRunner {
 
     algorithm = new NSGAIIBuilder<IntegerSolution>(problem, crossover, mutation)
             .setSelectionOperator(selection)
-            .setMaxEvaluations(250)
+            .setMaxEvaluations(2500)
             .setPopulationSize(100)
             .build() ;
 
