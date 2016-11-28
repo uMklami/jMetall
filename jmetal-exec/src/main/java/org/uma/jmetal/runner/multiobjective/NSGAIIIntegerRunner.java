@@ -70,13 +70,13 @@ public class NSGAIIIntegerRunner extends AbstractAlgorithmRunner {
       problemName = args[0] ;
       referenceParetoFront = args[1] ;
     } else {
-      problemName = "org.uma.jmetal.problem.multiobjective.NMMin" ;
+      problemName = "org.uma.jmetal.problem.multiobjective.FptvProblem" ;
       referenceParetoFront = "";
     }
 
     problem = ProblemUtils.<IntegerSolution> loadProblem(problemName);
 
-    double crossoverProbability = 0.9 ;
+    double crossoverProbability = 0.7 ;
     double crossoverDistributionIndex = 20.0 ;
     crossover = new IntegerSBXCrossover(crossoverProbability, crossoverDistributionIndex) ;
 
@@ -88,7 +88,7 @@ public class NSGAIIIntegerRunner extends AbstractAlgorithmRunner {
 
     algorithm = new NSGAIIBuilder<IntegerSolution>(problem, crossover, mutation)
             .setSelectionOperator(selection)
-            .setMaxEvaluations(25000)
+            .setMaxEvaluations(250)
             .setPopulationSize(100)
             .build() ;
 

@@ -62,7 +62,7 @@ public class NSGAIIIRunner extends AbstractAlgorithmRunner {
 	    SelectionOperator<List<DoubleSolution>, DoubleSolution> selection;
 	    String referenceParetoFront = "" ;
 
-    String problemName = "org.uma.jmetal.problem.multiobjective.dtlz.DTLZ1" ;
+    String problemName = "org.uma.jmetal.problem.multiobjective.FptvProblem" ;
 
     problem = ProblemUtils.loadProblem(problemName);
     

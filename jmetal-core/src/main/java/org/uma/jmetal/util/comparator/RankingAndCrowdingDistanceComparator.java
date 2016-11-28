@@ -41,9 +41,9 @@ public class RankingAndCrowdingDistanceComparator<S extends Solution<?>> impleme
   @Override
   public int compare(S solution1, S solution2) {
     int result = rankComparator.compare(solution1, solution2) ;
-    if (result == 0) {
+   if (result == 0) {
       result = crowdingDistanceComparator.compare(solution1, solution2);
-    }
+  }
 
     return result;
   }

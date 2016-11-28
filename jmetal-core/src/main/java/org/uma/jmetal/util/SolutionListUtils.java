@@ -126,11 +126,14 @@ public class SolutionListUtils {
 
     double[][] objectives;
     objectives = new double[solutionListSize][numberOfObjectives];
+    System.out.println("Inner printing of objectives from SolutionList");
     for (int i = 0; i < solutionListSize; i++) {
       for (int j = 0; j < numberOfObjectives; j++) {
         objectives[i][j] = solutionList.get(i).getObjective(j);
+        System.out.println(objectives[i][j]);
       }
     }
+    System.out.println("End inner Printing");
     return objectives;
   }
 

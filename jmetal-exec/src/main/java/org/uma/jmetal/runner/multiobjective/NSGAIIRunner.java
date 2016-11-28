@@ -54,24 +54,27 @@ public class NSGAIIRunner extends AbstractAlgorithmRunner {
     SelectionOperator<List<DoubleSolution>, DoubleSolution> selection;
     String referenceParetoFront = "" ;
 
-    String problemName ;
+  String problemName ;
     if (args.length == 1) {
       problemName = args[0];
     } else if (args.length == 2) {
       problemName = args[0] ;
       referenceParetoFront = args[1] ;
     } else {
+//       problemName = "org.uma.jmetal.problem.multiobjective.zdt.ZDT1";
+//       referenceParetoFront = "C:/Users/Anies/workspace/jMetall/jmetal-problem/src/test/resources/pareto_fronts/Golinski.pf" ;
+    	
       problemName = "org.uma.jmetal.problem.multiobjective.FptvProblem";
-      referenceParetoFront = "E:/Office Data/Projects/jMetal/jmetal-problem/src/test/resources/pareto_fronts/ZDT1.pf" ;
-    }
+      referenceParetoFront = "C:/Users/Anies/workspace/jMetall/jmetal-problem/src/test/resources/pareto_fronts/FptvProblem.pf" ;
+    } 
 
     problem = ProblemUtils.<DoubleSolution> loadProblem(problemName);
 
-    double crossoverProbability = 0.9 ;
+    double crossoverProbability = 0.8;
     double crossoverDistributionIndex = 20.0 ;
     crossover = new SBXCrossover(crossoverProbability, crossoverDistributionIndex) ;
 
-    double mutationProbability = 1.0 / problem.getNumberOfVariables() ;
+    double mutationProbability = 0.4/ problem.getNumberOfVariables() ;
     double mutationDistributionIndex = 20.0 ;
     mutation = new PolynomialMutation(mutationProbability, mutationDistributionIndex) ;
 
@@ -81,7 +84,7 @@ public class NSGAIIRunner extends AbstractAlgorithmRunner {
     algorithm = new NSGAIIBuilder<DoubleSolution>(problem, crossover, mutation)
         .setSelectionOperator(selection)
         .setMaxEvaluations(25000)
-        .setPopulationSize(100)
+        .setPopulationSize(500)
         .build() ;
 
     AlgorithmRunner algorithmRunner = new AlgorithmRunner.Executor(algorithm)
@@ -96,5 +99,9 @@ public class NSGAIIRunner extends AbstractAlgorithmRunner {
     if (!referenceParetoFront.equals("")) {
       printQualityIndicators(population, referenceParetoFront) ;
     }
+    
+    /**	graph generation	**/
+    
+    
   }
 }

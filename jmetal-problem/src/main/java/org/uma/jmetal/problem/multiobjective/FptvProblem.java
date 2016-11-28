@@ -4,82 +4,131 @@ package org.uma.jmetal.problem.multiobjective;
 import java.util.Arrays;
 import java.util.List;
 
-import org.uma.jmetal.problem.impl.AbstractDoubleProblem;
+import org.uma.jmetal.problem.impl.AbstractIntegerProblem;
 import org.uma.jmetal.solution.DoubleSolution;
+import org.uma.jmetal.solution.IntegerSolution;
 import org.uma.jmetal.util.solutionattribute.impl.NumberOfViolatedConstraints;
 import org.uma.jmetal.util.solutionattribute.impl.OverallConstraintViolation;
 
 
 @SuppressWarnings("serial")
-public class FptvProblem extends AbstractDoubleProblem /*implements ConstrainedProblem<DoubleSolution> */{
+public class FptvProblem extends AbstractIntegerProblem /*implements ConstrainedProblem<DoubleSolution>*/ {
 public OverallConstraintViolation<DoubleSolution> overallConstraintViolationDegree ;
 public NumberOfViolatedConstraints<DoubleSolution> numberOfViolatedConstraints ;
+
+double f1max = 50;
+double f2max = 15;
+double f1min =  15;
+double f2min = 50; 
+boolean scaling;
 
 /**
 * Constructor.
 */
 public FptvProblem() {
-setNumberOfVariables(8);
+setNumberOfVariables(10);
 setNumberOfObjectives(2);
-setNumberOfConstraints(1);
+setNumberOfConstraints(10);
 setName("FptvProblem") ;
 
-List<Double> lowerLimit = Arrays.asList(100.0, 100.0, 2.0, 3000.0, 1500.0, 20.0, 18.0, 512.0) ;
-List<Double> upperLimit = Arrays.asList(300.0, 300.0, 6.0, 4500.0, 2500.0, 50.0, 24.0, 512.0) ;
+scaling = false;
+
+List<Integer> lowerLimit = Arrays.asList(100, 100, 2,50,1, 3500, 1500, 400, 100, 12 ) ;
+List<Integer> upperLimit = Arrays.asList(300, 300, 6,100, 3, 4000, 2000, 600, 200 , 16 ) ;
 
 setLowerLimit(lowerLimit);
 setUpperLimit(upperLimit);
 
-overallConstraintViolationDegree = new OverallConstraintViolation<DoubleSolution>() ;
-numberOfViolatedConstraints = new NumberOfViolatedConstraints<DoubleSolution>() ;
+//overallConstraintViolationDegree = new OverallConstraintViolation<DoubleSolution>() ;
+//numberOfViolatedConstraints = new NumberOfViolatedConstraints<DoubleSolution>() ;
 }
 
 /** Evaluate() method */
 @Override
-public void evaluate(DoubleSolution solution) {
-double NoVC,NoTM,IDQ,DRP,Du,Dr,Dt,Dp;
+public void evaluate(IntegerSolution solution) {
+double NoVC,NoTM,IDQ,NoVCR,IDQR,DRP,Du,Dr,Dt,Dp;
+double obj1, obj2 = 0;
+
 NoVC = solution.getVariableValue(0);
 NoTM = solution.getVariableValue(1);
 IDQ = solution.getVariableValue(2);
-DRP = solution.getVariableValue(3);
-Dp = solution.getVariableValue(4);
-Dr = solution.getVariableValue(5);
-Dt = solution.getVariableValue(6);
+NoVCR =  solution.getVariableValue(3);
+IDQR=  solution.getVariableValue(4);
+DRP = solution.getVariableValue(5);
+Dp = solution.getVariableValue(6);
 Du = solution.getVariableValue(7);
+Dr = solution.getVariableValue(8);
+Dt = solution.getVariableValue(9);
 
-double f1 = (0.01*(NoVC))+(0.05*NoTM)+(2.75*IDQ);
 
-//double aux = 745.0 * x4 / (x2 * x3);
-double f2 = (DRP - (Dp+Du+Dr))/Dt;
+ obj1 = (0.02*(NoVC))+(0.05*NoTM)+(2.70*IDQ) - ((0.01*NoVCR + 1.75*IDQR));
+ obj2 = (DRP - (Dp+(Du-Dr)))/Dt;
 
-solution.setObjective(0,f1);
-solution.setObjective(1,f2);
+ 
+ 
+//if (obj1 <= f1max && obj1 >= f1min && obj2 <= f2max && obj2 >= f2min) {
+	 solution.setObjective(0, obj1);
+	 solution.setObjective(1, obj2);
+	 //System.out.println("object : "+obj1+"  object 2 :"+obj2);
+	 
+ // }
+
+//  if (obj2 < f2max && obj2 >f2min) {
+//	  solution.setObjective(1, obj2);
+//  }
+//  if (scaling) {
+//      obj2 = (obj2 - f2min)*(f1max - f1min)/(f2max - f2min)+f1min ;
+//    }
+
+			
 }
+
 
 /** EvaluateConstraints() method */
-/*
-@Override
-public void evaluateConstraints(DoubleSolution solution)  {
-double[] constraint = new double[this.getNumberOfConstraints()];
-double x1,x2,x3,x4,x5,x6,x7;
-
-x1 = solution.getVariableValue(0);
-
-
-constraint[0] = ;
-
-
-double overallConstraintViolation = 0.0;
-int violatedConstraints = 0;
-for (int i = 0; i < getNumberOfConstraints(); i++) {
-  if (constraint[i]<0.0){
-    overallConstraintViolation+=constraint[i];
-    violatedConstraints++;
-  }
+ 
+//@Override
+//public void evaluateConstraints(DoubleSolution solution)  {
+//    double[] constraint = new double[this.getNumberOfConstraints()];
+//    double NoVC,NoTM,IDQ,NoVCR,IDQR,DRP,Du,Dr,Dt,Dp;
+//
+//
+//			NoVC = solution.getVariableValue(0);
+//			NoTM = solution.getVariableValue(1);
+//			IDQ = solution.getVariableValue(2);
+//			NoVCR =  solution.getVariableValue(3);
+//			IDQR=  solution.getVariableValue(4);
+//			DRP = solution.getVariableValue(5);
+//			Dp = solution.getVariableValue(6);
+//			Du = solution.getVariableValue(7);
+//			Dr = solution.getVariableValue(8);
+//			Dt = solution.getVariableValue(9);
+//			
+//
+//						constraint[0] = 101;
+//						constraint[1] = 101;
+//						constraint[2] = 1.2;
+//						constraint[3] = 101;
+//						constraint[4] = 1;
+//						constraint[5] = 3501;
+//						constraint[6] = 1501;
+//						constraint[7] = 401;
+//						constraint[8] = 101;
+//						constraint [9] = 13;
+//
+//double overallConstraintViolation = 0.0;
+//int violatedConstraints = 0;
+//for (int i = 0; i < getNumberOfConstraints(); i++) {
+//  if (constraint[i]<0.0){
+//    overallConstraintViolation+=constraint[i];
+//    violatedConstraints++;
+//  }
+//}
+//
+//
+//    overallConstraintViolationDegree.setAttribute(solution, overallConstraintViolation);
+//    numberOfViolatedConstraints.setAttribute(solution, violatedConstraints);
+//  }
 }
 
-overallConstraintViolationDegree.setAttribute(solution, overallConstraintViolation);
-numberOfViolatedConstraints.setAttribute(solution, violatedConstraints);
-}*/
-}
+
 

@@ -39,8 +39,8 @@ public class NSGAIIBuilder<S extends Solution<?>> implements AlgorithmBuilder<NS
   public NSGAIIBuilder(Problem<S> problem, CrossoverOperator<S> crossoverOperator,
       MutationOperator<S> mutationOperator) {
     this.problem = problem;
-    maxEvaluations = 25000;
-    populationSize = 100;
+//    maxEvaluations = 10000;
+//    populationSize = 500;
     this.crossoverOperator = crossoverOperator ;
     this.mutationOperator = mutationOperator ;
     selectionOperator = new BinaryTournamentSelection<S>(new RankingAndCrowdingDistanceComparator<S>()) ;

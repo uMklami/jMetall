@@ -1,10 +1,12 @@
 package org.uma.jmetal.algorithm.multiobjective.nsgaii;
 
+import org.apache.commons.math3.genetics.RandomKeyMutation;
 import org.uma.jmetal.algorithm.impl.AbstractGeneticAlgorithm;
 import org.uma.jmetal.operator.CrossoverOperator;
 import org.uma.jmetal.operator.MutationOperator;
 import org.uma.jmetal.operator.SelectionOperator;
 import org.uma.jmetal.problem.Problem;
+import org.uma.jmetal.solution.BinarySolution;
 import org.uma.jmetal.solution.Solution;
 import org.uma.jmetal.util.SolutionListUtils;
 import org.uma.jmetal.util.comparator.CrowdingDistanceComparator;
@@ -38,8 +40,8 @@ public class NSGAII<S extends Solution<?>> extends AbstractGeneticAlgorithm<S, L
     this.maxEvaluations = maxEvaluations;
     setMaxPopulationSize(populationSize); ;
 
-    this.crossoverOperator = crossoverOperator;
-    this.mutationOperator = mutationOperator;
+    this.crossoverOperator = (CrossoverOperator<S>) crossoverOperator;
+    this.mutationOperator = (MutationOperator<S>) mutationOperator;
     this.selectionOperator = selectionOperator;
 
     this.evaluator = evaluator;

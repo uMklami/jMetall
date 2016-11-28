@@ -69,5 +69,13 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+        <!-- JavaFX dependency -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>javafx</artifactId>
+			<version>2.2.3</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/jfxrt.jar</systemPath>
+		</dependency>
     </dependencies>
 </project>

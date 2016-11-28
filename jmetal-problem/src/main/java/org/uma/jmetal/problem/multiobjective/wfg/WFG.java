@@ -22,6 +22,7 @@
 package org.uma.jmetal.problem.multiobjective.wfg;
 
 import org.uma.jmetal.problem.impl.AbstractDoubleProblem;
+
 import org.uma.jmetal.solution.DoubleSolution;
 import org.uma.jmetal.solution.impl.DefaultDoubleSolution;
 

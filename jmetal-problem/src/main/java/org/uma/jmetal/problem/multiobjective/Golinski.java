@@ -22,6 +22,7 @@
 package org.uma.jmetal.problem.multiobjective;
 
 import org.uma.jmetal.problem.ConstrainedProblem;
+
 import org.uma.jmetal.problem.impl.AbstractDoubleProblem;
 import org.uma.jmetal.solution.DoubleSolution;
 import org.uma.jmetal.util.solutionattribute.impl.NumberOfViolatedConstraints;
@@ -29,6 +30,7 @@ import org.uma.jmetal.util.solutionattribute.impl.OverallConstraintViolation;
 
 import java.util.Arrays;
 import java.util.List;
+
 
 /**
  * Class representing problem Golinski.
