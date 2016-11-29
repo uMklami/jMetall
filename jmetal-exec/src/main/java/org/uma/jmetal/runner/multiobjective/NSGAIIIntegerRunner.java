@@ -71,12 +71,12 @@ public class NSGAIIIntegerRunner extends AbstractAlgorithmRunner {
       referenceParetoFront = args[1] ;
     } else {
       problemName = "org.uma.jmetal.problem.multiobjective.ProductService" ;
-      referenceParetoFront = "E:/Office Data/Projects/jMetall/jmetal-problem/src/test/resources/pareto_fronts/ProductService.pf";
+      referenceParetoFront = "ProductService.pf";
     }
 
     problem = ProblemUtils.<IntegerSolution> loadProblem(problemName);
 
-    double crossoverProbability = 0.7 ;
+    double crossoverProbability = 0.8 ;
     double crossoverDistributionIndex = 20.0 ;
     crossover = new IntegerSBXCrossover(crossoverProbability, crossoverDistributionIndex) ;
 

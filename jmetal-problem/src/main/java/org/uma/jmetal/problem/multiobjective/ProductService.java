@@ -5,16 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.uma.jmetal.problem.impl.AbstractIntegerProblem;
-import org.uma.jmetal.solution.DoubleSolution;
 import org.uma.jmetal.solution.IntegerSolution;
-import org.uma.jmetal.util.solutionattribute.impl.NumberOfViolatedConstraints;
-import org.uma.jmetal.util.solutionattribute.impl.OverallConstraintViolation;
 
 @SuppressWarnings("serial")
 public class ProductService extends AbstractIntegerProblem {
-	public OverallConstraintViolation<DoubleSolution> overallConstraintViolationDegree;
-	public NumberOfViolatedConstraints<DoubleSolution> numberOfViolatedConstraints;
-
+	
 	double f1min = 15;
 	double f1max = 50;
 	double f2min = 50;
@@ -26,11 +21,10 @@ public class ProductService extends AbstractIntegerProblem {
 	public ProductService() {
 		setNumberOfVariables(10);
 		setNumberOfObjectives(2);
-		setNumberOfConstraints(10);
 		setName("ProductService");
 
 		List<Integer> lowerLimit = Arrays.asList(100, 100, 2, 50, 1, 3500, 1500, 400, 100, 12);
-		List<Integer> upperLimit = Arrays.asList(300, 300, 6, 100, 3, 4000, 2000, 600, 200, 16);
+		List<Integer> upperLimit = Arrays.asList(1000, 1000, 20, 100, 3, 4000, 2000, 600, 200, 16);
 
 		setLowerLimit(lowerLimit);
 		setUpperLimit(upperLimit);
