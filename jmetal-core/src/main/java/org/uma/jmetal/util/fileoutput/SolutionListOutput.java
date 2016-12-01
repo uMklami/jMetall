@@ -129,11 +129,11 @@ public class SolutionListOutput {
 						double fun = solutionList.get(i).getObjective(j);
 
 						if (j == 0) {
-							if (fun > 5 && fun <  30) {
+							if (fun > 10 && fun <  50) {
 								fun1 = fun;
 							}
 						}else{
-							if(fun > 70 && fun < 100){
+							if(fun > 50 && fun < 100){
 								fun2 = fun;
 								if(fun1 !=0){
 									bufferedWriter.write(fun1 + context.getSeparator());

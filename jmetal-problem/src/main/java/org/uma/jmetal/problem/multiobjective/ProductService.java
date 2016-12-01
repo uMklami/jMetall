@@ -24,7 +24,7 @@ public class ProductService extends AbstractIntegerProblem {
 		setName("ProductService");
 
 		List<Integer> lowerLimit = Arrays.asList(100, 100, 2, 50, 1, 3500, 1500, 400, 100, 12);
-		List<Integer> upperLimit = Arrays.asList(1000, 1000, 20, 100, 3, 4000, 2000, 600, 200, 16);
+		List<Integer> upperLimit = Arrays.asList(1000, 1000, 10, 100, 3, 4000, 2000, 600, 200, 16);
 
 		setLowerLimit(lowerLimit);
 		setUpperLimit(upperLimit);
