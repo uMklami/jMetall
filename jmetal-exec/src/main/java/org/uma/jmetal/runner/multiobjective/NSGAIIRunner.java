@@ -62,7 +62,7 @@ public class NSGAIIRunner extends AbstractAlgorithmRunner {
       referenceParetoFront = args[1] ;
     } else {
        problemName = "org.uma.jmetal.problem.multiobjective.Golinski2";
-//       referenceParetoFront = "C:/Users/Anies/workspace/jMetall/jmetal-problem/src/test/resources/pareto_fronts/Golinski.pf" ;
+       referenceParetoFront = "pareto_fronts/Golinski.pf";
     	
 //      problemName = "org.uma.jmetal.problem.multiobjective.FptvProblem";
 //      referenceParetoFront = "C:/Users/Anies/workspace/jMetall/jmetal-problem/src/test/resources/pareto_fronts/FptvProblem.pf" ;

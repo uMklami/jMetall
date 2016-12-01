@@ -71,7 +71,7 @@ public class NSGAIIIntegerRunner extends AbstractAlgorithmRunner {
       referenceParetoFront = args[1] ;
     } else {
       problemName = "org.uma.jmetal.problem.multiobjective.ProductService" ;
-      referenceParetoFront = "ProductService.pf";
+      referenceParetoFront = "pareto_fronts/ProductService.pf";
     }
 
     problem = ProblemUtils.<IntegerSolution> loadProblem(problemName);
