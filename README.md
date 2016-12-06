@@ -10,8 +10,8 @@ hands on practicing jMetal
        -> Go to Help -> Eclipse Marketplace<br>
        -> Search by "Maven"<br>
        -> Click "Install" button at "Maven Integration for Eclipse" section<br>
-<br>
+
 **Follow the instruction step by step**<br>
-*After successful installation do the followings in Eclipse:<br>
+* After successful installation do the followings in Eclipse:<br>
        -> Go to Window --> Preferences <br>
        -> Observe, Maven is enlisted at left panel <br>
