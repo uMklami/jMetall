@@ -6,8 +6,8 @@ hands on practicing jMetal
 * Need to install java.<br>
 * Need to download and give maven path on your envirment variable.<br>
 * Maven integration for eclipse<br>
-       -> Open Eclipse<br>
-       -> Go to Help -> Eclipse Marketplace<br>
+       * Open Eclipse<br>
+       * Go to Help -> Eclipse Marketplace<br>
        -> Search by "Maven"<br>
        -> Click "Install" button at "Maven Integration for Eclipse" section<br>
 
