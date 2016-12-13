@@ -54,10 +54,10 @@ public class ProductService extends AbstractIntegerProblem {
 		obj1 = (0.02 * (NoVC)) + (0.05 * NoTM) + (2.70 * IDQ) - ((0.01 * NoVCR + 1.75 * IDQR));
 		obj2 = (DRP - (Dp + (Du - Dr))) / Dt;
 
-//		if (obj1 <= f1max && obj1 >= f1min && obj2 <= f2max && obj2 >= f2min) {
+		if (obj1 <= f1max && obj1 >= f1min && obj2 <= f2max && obj2 >= f2min) {
 			solution.setObjective(0, obj1);
 			solution.setObjective(1, obj2);
 //			System.out.println("object : " + obj1 + " object 2 :" + obj2);
-//		}
+		}
 	}
 }
